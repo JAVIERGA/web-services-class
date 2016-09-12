@@ -44,10 +44,10 @@ public class OrderServiceTest {
         assertEquals("Order number: 1: Customer Jenn has ordered 10 pencils. Is paid", result);
     }
     
-//    @Test(expected=ServerSOAPFaultException.class)
-//    public void testGetNonexistantOrderInfo() {
-//        getOrderInfo("404");
-//    }
+    @Test
+    public void testGetNonexistantOrderInfo() {
+        getOrderInfo("404");
+    }
         
     private static String orderProduct(java.lang.String orderNumber, java.lang.String customerName, java.lang.Integer amount, java.lang.String product) {
         com.strater.jenn.OrderService_Service service = new com.strater.jenn.OrderService_Service();

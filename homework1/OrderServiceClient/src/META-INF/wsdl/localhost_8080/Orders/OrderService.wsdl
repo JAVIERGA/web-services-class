@@ -4,11 +4,11 @@
 <xsd:import namespace="http://jenn.strater.com/" schemaLocation="http://localhost:8080/Orders/OrderService?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="getOrderInfo">
-<part name="parameters" element="tns:getOrderInfo"/>
+<message name="payOrder">
+<part name="parameters" element="tns:payOrder"/>
 </message>
-<message name="getOrderInfoResponse">
-<part name="parameters" element="tns:getOrderInfoResponse"/>
+<message name="payOrderResponse">
+<part name="parameters" element="tns:payOrderResponse"/>
 </message>
 <message name="orderProduct">
 <part name="parameters" element="tns:orderProduct"/>
@@ -16,11 +16,11 @@
 <message name="orderProductResponse">
 <part name="parameters" element="tns:orderProductResponse"/>
 </message>
-<message name="payOrder">
-<part name="parameters" element="tns:payOrder"/>
+<message name="getOrderInfo">
+<part name="parameters" element="tns:getOrderInfo"/>
 </message>
-<message name="payOrderResponse">
-<part name="parameters" element="tns:payOrderResponse"/>
+<message name="getOrderInfoResponse">
+<part name="parameters" element="tns:getOrderInfoResponse"/>
 </message>
 <message name="clearOrders">
 <part name="parameters" element="tns:clearOrders"/>
@@ -29,17 +29,17 @@
 <part name="parameters" element="tns:clearOrdersResponse"/>
 </message>
 <portType name="OrderService">
-<operation name="getOrderInfo">
-<input wsam:Action="http://jenn.strater.com/OrderService/getOrderInfoRequest" message="tns:getOrderInfo"/>
-<output wsam:Action="http://jenn.strater.com/OrderService/getOrderInfoResponse" message="tns:getOrderInfoResponse"/>
+<operation name="payOrder">
+<input wsam:Action="http://jenn.strater.com/OrderService/payOrderRequest" message="tns:payOrder"/>
+<output wsam:Action="http://jenn.strater.com/OrderService/payOrderResponse" message="tns:payOrderResponse"/>
 </operation>
 <operation name="orderProduct">
 <input wsam:Action="http://jenn.strater.com/OrderService/orderProductRequest" message="tns:orderProduct"/>
 <output wsam:Action="http://jenn.strater.com/OrderService/orderProductResponse" message="tns:orderProductResponse"/>
 </operation>
-<operation name="payOrder">
-<input wsam:Action="http://jenn.strater.com/OrderService/payOrderRequest" message="tns:payOrder"/>
-<output wsam:Action="http://jenn.strater.com/OrderService/payOrderResponse" message="tns:payOrderResponse"/>
+<operation name="getOrderInfo">
+<input wsam:Action="http://jenn.strater.com/OrderService/getOrderInfoRequest" message="tns:getOrderInfo"/>
+<output wsam:Action="http://jenn.strater.com/OrderService/getOrderInfoResponse" message="tns:getOrderInfoResponse"/>
 </operation>
 <operation name="clearOrders">
 <input wsam:Action="http://jenn.strater.com/OrderService/clearOrdersRequest" message="tns:clearOrders"/>
@@ -48,7 +48,7 @@
 </portType>
 <binding name="OrderServicePortBinding" type="tns:OrderService">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="getOrderInfo">
+<operation name="payOrder">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -66,7 +66,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="payOrder">
+<operation name="getOrderInfo">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -87,7 +87,7 @@
 </binding>
 <service name="OrderService">
 <port name="OrderServicePort" binding="tns:OrderServicePortBinding">
-<soap:address location="http://localhost:8080/Orders/OrderService"/>
+<soap:address location="http://localhost:8070/Orders/OrderService"/>
 </port>
 </service>
 </definitions>
