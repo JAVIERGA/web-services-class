@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
     <system systemId="file:/Users/jstrater/Documents/dev/Web%20Services/web-services-class/homework4/WhitePages/src/java/WhitePages.wsdl" uri="src/conf/xml-resources/web-services/WhitePagesService/wsdl/WhitePages.wsdl"/>
+    <system systemId="file:/Users/jstrater/Documents/dev/Web%20Services/web-services-class/homework4/WhitePages/src/java/com/strater/jenn/WhitePages.wsdl" uri="src/conf/xml-resources/web-services/WhitePagesService/wsdl/WhitePages.wsdl"/>
 </catalog>

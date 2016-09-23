@@ -29,27 +29,44 @@
             <xsd:element name="request" type="tns:Person"></xsd:element>
             <xsd:element name="status" type="xsd:string"></xsd:element>
             <xsd:element name="fault" type="tns:faultType"></xsd:element>
+            <xsd:element name="personquery" type="tns:Person"></xsd:element>
+            <xsd:complexType name="personArray">
+                <xsd:sequence>
+                    <xsd:element name="newElement" type="tns:Person" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="personArray" type="tns:personArray"></xsd:element>
         </xsd:schema>
     </types>
-    <message name="WhitePagesOperationRequest">
-        <part name="part1" type="xsd:string"/>
+    <message name="addPersonRequest">
+        <part name="person" type="tns:Person"/>
     </message>
-    <message name="WhitePagesOperationResponse">
-        <part name="part1" type="xsd:string"/>
+    <message name="addPersonResponse">
+        <part name="status" type="xsd:string"/>
     </message>
     <message name="wpfault">
         <part name="fault" element="tns:fault"/>
     </message>
+    <message name="findpersonRequest">
+        <part name="person" type="tns:Person"/>
+    </message>
+    <message name="findpersonResponse">
+        <part name="personArray" element="tns:personArray"/>
+    </message>
     <portType name="WhitePagesPortType">
-        <operation name="WhitePagesOperation">
-            <input name="input1" message="tns:WhitePagesOperationRequest"/>
-            <output name="output1" message="tns:WhitePagesOperationResponse"/>
+        <operation name="addPerson">
+            <input name="input1" message="tns:addPersonRequest"/>
+            <output name="output1" message="tns:addPersonResponse"/>
             <fault name="wpfault" message="tns:wpfault"/>
+        </operation>
+        <operation name="findPerson">
+            <input name="input2" message="tns:findpersonRequest"/>
+            <output name="output2" message="tns:findpersonResponse"/>
         </operation>
     </portType>
     <binding name="WhitePagesPortTypeBinding" type="tns:WhitePagesPortType">
         <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
-        <operation name="WhitePagesOperation">
+        <operation name="addPerson">
             <soap:operation/>
             <input name="input1">
                 <soap:body use="literal"/>
@@ -60,6 +77,10 @@
             <fault name="wpfault">
                 <soap:fault name="wpfault" use="literal"/>
             </fault>
+        </operation>
+        <operation name="findPerson">
+            <input name="input2"/>
+            <output name="output2"/>
         </operation>
     </binding>
     <service name="WhitePagesService">
