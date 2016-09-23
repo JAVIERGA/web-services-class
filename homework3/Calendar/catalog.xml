@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/Users/jstrater/Documents/dev/Web%20Services/web-services-class/homework3/Calendar/src/java/calendar.wsdl" uri="src/conf/xml-resources/web-services/Calendar/wsdl/calendar.wsdl"/>
+    <system systemId="file:/Users/jstrater/Documents/dev/Web%20Services/web-services-class/homework3/Calendar/src/java/com/strater/jenn/calendar.wsdl" uri="src/conf/xml-resources/web-services/Calendar/wsdl/calendar.wsdl"/>
+    <system systemId="http://localhost:8080/Calendar/calendar?wsdl" uri="src/conf/xml-resources/web-service-references/calendar/wsdl/localhost_8080/Calendar/calendar.wsdl"/>
+</catalog>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="WhitePages" targetNamespace="ws.imm.dtu"
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="ws.imm.dtu" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+    <types>
+        <xsd:schema targetNamespace="ws.imm.dtu" xmlns:tns="ws.imm.dtu">
+            <xsd:complexType name="Person">
+                <xsd:sequence>
+                    <xsd:element name="address" type="tns:address"></xsd:element>
+                </xsd:sequence>
+                <xsd:attribute name="firstname" type="xsd:string"/>
+                <xsd:attribute name="lastname" type="xsd:string"/>
+                <xsd:attribute name="phone" type="xsd:string"/>
+            </xsd:complexType>
+            <xsd:complexType name="address">
+                <xsd:sequence>
+                    <xsd:element name="street" type="xsd:string"></xsd:element>
+                    <xsd:element name="city" type="xsd:string"></xsd:element>
+                    <xsd:element name="postcode" type="xsd:string"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="faultType">
+                <xsd:sequence>
+                    <xsd:element name="errorMessage" type="xsd:string"></xsd:element>
+                    <xsd:element name="person" type="tns:Person"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="request" type="tns:Person"></xsd:element>
+            <xsd:element name="status" type="xsd:string"></xsd:element>
+            <xsd:element name="fault" type="tns:faultType"></xsd:element>
+        </xsd:schema>
+    </types>
+    <message name="WhitePagesOperationRequest">
+        <part name="part1" type="xsd:string"/>
+    </message>
+    <message name="WhitePagesOperationResponse">
+        <part name="part1" type="xsd:string"/>
+    </message>
+    <message name="wpfault">
+        <part name="fault" element="tns:fault"/>
+    </message>
+    <portType name="WhitePagesPortType">
+        <operation name="WhitePagesOperation">
+            <input name="input1" message="tns:WhitePagesOperationRequest"/>
+            <output name="output1" message="tns:WhitePagesOperationResponse"/>
+            <fault name="wpfault" message="tns:wpfault"/>
+        </operation>
+    </portType>
+    <binding name="WhitePagesPortTypeBinding" type="tns:WhitePagesPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="WhitePagesOperation">
+            <soap:operation/>
+            <input name="input1">
+                <soap:body use="literal"/>
+            </input>
+            <output name="output1">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="wpfault">
+                <soap:fault name="wpfault" use="literal"/>
+            </fault>
+        </operation>
+    </binding>
+    <service name="WhitePagesService">
+        <port name="WhitePagesPortTypeBindingPort" binding="tns:WhitePagesPortTypeBinding">
+            <soap:address location="http://localhost:${HttpDefaultPort}/service"/>
+        </port>
+    </service>
+</definitions>
