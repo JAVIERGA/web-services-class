@@ -1,13 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<definitions name="WhitePages" targetNamespace="ws.imm.dtu"
-    xmlns="http://schemas.xmlsoap.org/wsdl/"
-    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
-    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="ws.imm.dtu" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.3 (tags/2.3-7528; 2013-04-29T19:34:10+0000) JAXWS-RI/2.2.8 JAXWS/2.2 svn-revision#unknown. --><definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="ws.imm.dtu" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="WhitePages" targetNamespace="ws.imm.dtu">
     <types>
-        <xsd:schema targetNamespace="ws.imm.dtu" xmlns:tns="ws.imm.dtu">
+        <xsd:schema xmlns:tns="ws.imm.dtu" targetNamespace="ws.imm.dtu">
             <xsd:complexType name="Person">
                 <xsd:sequence>
-                    <xsd:element name="address" type="tns:address"></xsd:element>
+                    <xsd:element name="address" type="tns:address"/>
                 </xsd:sequence>
                 <xsd:attribute name="firstname" type="xsd:string"/>
                 <xsd:attribute name="lastname" type="xsd:string"/>
@@ -15,26 +11,26 @@
             </xsd:complexType>
             <xsd:complexType name="address">
                 <xsd:sequence>
-                    <xsd:element name="street" type="xsd:string"></xsd:element>
-                    <xsd:element name="city" type="xsd:string"></xsd:element>
-                    <xsd:element name="postcode" type="xsd:string"></xsd:element>
+                    <xsd:element name="street" type="xsd:string"/>
+                    <xsd:element name="city" type="xsd:string"/>
+                    <xsd:element name="postcode" type="xsd:string"/>
                 </xsd:sequence>
             </xsd:complexType>
             <xsd:complexType name="faultType">
                 <xsd:sequence>
-                    <xsd:element name="errorMessage" type="xsd:string"></xsd:element>
-                    <xsd:element name="person" type="tns:Person"></xsd:element>
+                    <xsd:element name="errorMessage" type="xsd:string"/>
+                    <xsd:element name="person" type="tns:Person"/>
                 </xsd:sequence>
             </xsd:complexType>
-            <xsd:element name="request" type="tns:Person"></xsd:element>
-            <xsd:element name="status" type="xsd:string"></xsd:element>
-            <xsd:element name="fault" type="tns:faultType"></xsd:element>
+            <xsd:element name="request" type="tns:Person"/>
+            <xsd:element name="status" type="xsd:string"/>
+            <xsd:element name="fault" type="tns:faultType"/>
             <xsd:complexType name="personArray">
                 <xsd:sequence>
-                    <xsd:element name="person" type="tns:Person" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+                    <xsd:element name="person" type="tns:Person" minOccurs="0" maxOccurs="unbounded"/>
                 </xsd:sequence>
             </xsd:complexType>
-            <xsd:element name="personArray" type="tns:personArray"></xsd:element>
+            <xsd:element name="personArray" type="tns:personArray"/>
         </xsd:schema>
     </types>
     <message name="addPersonRequest">
@@ -89,7 +85,7 @@
     </binding>
     <service name="WhitePagesService">
         <port name="WhitePagesPortTypeBindingPort" binding="tns:WhitePagesPortTypeBinding">
-            <soap:address location="http://localhost:${HttpDefaultPort}/service"/>
+            <soap:address location="http://localhost:8080/WhitePages/WhitePagesService"/>
         </port>
     </service>
 </definitions>

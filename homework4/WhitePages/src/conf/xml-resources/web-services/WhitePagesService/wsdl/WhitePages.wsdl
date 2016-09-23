@@ -2,7 +2,7 @@
 <definitions name="WhitePages" targetNamespace="ws.imm.dtu"
     xmlns="http://schemas.xmlsoap.org/wsdl/"
     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
-    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="ws.imm.dtu">
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="ws.imm.dtu" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
     <types>
         <xsd:schema targetNamespace="ws.imm.dtu" xmlns:tns="ws.imm.dtu">
             <xsd:complexType name="Person">
@@ -29,10 +29,9 @@
             <xsd:element name="request" type="tns:Person"></xsd:element>
             <xsd:element name="status" type="xsd:string"></xsd:element>
             <xsd:element name="fault" type="tns:faultType"></xsd:element>
-            <xsd:element name="personquery" type="tns:Person"></xsd:element>
             <xsd:complexType name="personArray">
                 <xsd:sequence>
-                    <xsd:element name="newElement" type="tns:Person" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+                    <xsd:element name="person" type="tns:Person" minOccurs="0" maxOccurs="unbounded"></xsd:element>
                 </xsd:sequence>
             </xsd:complexType>
             <xsd:element name="personArray" type="tns:personArray"></xsd:element>
@@ -48,7 +47,7 @@
         <part name="fault" element="tns:fault"/>
     </message>
     <message name="findPersonOperationRequest">
-        <part name="person" type="tns:personquery"/>
+        <part name="person" type="tns:Person"/>
     </message>
     <message name="findPersonOperationResponse">
         <part name="personArray" type="tns:personArray"/>
@@ -64,4 +63,33 @@
             <output name="output2" message="tns:findPersonOperationResponse"/>
         </operation>
     </portType>
+    <binding name="WhitePagesPortTypeBinding" type="tns:WhitePagesPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="addPerson">
+            <soap:operation/>
+            <input name="input1">
+                <soap:body use="literal"/>
+            </input>
+            <output name="output1">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="wpfault">
+                <soap:fault name="wpfault" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="findPerson">
+            <soap:operation/>
+            <input name="input2">
+                <soap:body use="literal"/>
+            </input>
+            <output name="output2">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="WhitePagesService">
+        <port name="WhitePagesPortTypeBindingPort" binding="tns:WhitePagesPortTypeBinding">
+            <soap:address location="http://localhost:${HttpDefaultPort}/service"/>
+        </port>
+    </service>
 </definitions>
